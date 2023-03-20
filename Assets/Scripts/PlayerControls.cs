@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PlayerControls : MonoBehaviour
     Rigidbody2D rBody;
     PlayerInput playerInput;
     Vector2 moveVector;
+    bool airborne;
 
     [SerializeField] float jumpFactor = 1;
     [SerializeField] float moveFactor = 1;
@@ -15,6 +17,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        airborne = true;
         rBody = GetComponent<Rigidbody2D>();
     }
 
@@ -24,15 +27,13 @@ public class PlayerControls : MonoBehaviour
         float xVelo = rBody.velocity.x;
         float yVelo = rBody.velocity.y;
 
-        if (Mathf.Abs(xVelo) < speedLimit)
+        rBody.AddForce(moveVector * Vector2.right);
+        if (Mathf.Abs(xVelo) > speedLimit)
         {
-            rBody.AddForce(moveVector * Vector2.right);
-        } else
-        {
-            rBody.velocity = new Vector2 (xVelo / Mathf.Abs(xVelo) * speedLimit, yVelo);
+            rBody.velocity = new Vector2(xVelo / Mathf.Abs(xVelo) * speedLimit, yVelo);
         }
-
     }
+
     public void OnMove(InputAction.CallbackContext context){ //i dont actually know what this means
 
         moveVector = context.ReadValue<Vector2>() * moveFactor;
@@ -41,8 +42,19 @@ public class PlayerControls : MonoBehaviour
     {
         if (context.action.WasPerformedThisFrame())
         {
-
-            rBody.AddForce(jumpFactor * Vector2.up, ForceMode2D.Impulse);
+            if (!airborne)
+            {
+                rBody.AddForce(jumpFactor * Vector2.up, ForceMode2D.Impulse);
+            }
         }
+    }
+
+    private void OnTriggerEnter2D (Collider2D collision)
+    {
+        airborne = false;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        airborne = true;
     }
 }
