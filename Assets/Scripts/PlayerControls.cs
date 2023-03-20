@@ -29,19 +29,20 @@ public class PlayerControls : MonoBehaviour
             rBody.AddForce(moveVector * Vector2.right);
         } else
         {
-            //rBody.velocity = new Vector2 (xVelo / Mathf.Abs(xVelo) * speedLimit, yVelo);
+            rBody.velocity = new Vector2 (xVelo / Mathf.Abs(xVelo) * speedLimit, yVelo);
         }
 
     }
-    public void OnMove(InputAction.CallbackContext context){// i dont actually know what this means
+    public void OnMove(InputAction.CallbackContext context){ //i dont actually know what this means
 
         moveVector = context.ReadValue<Vector2>() * moveFactor;
     }
-    public void OnJump(InputAction.CallbackContext context){ 
-        if(context.action.WasPerformedThisFrame()){
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.action.WasPerformedThisFrame())
+        {
+
             rBody.AddForce(jumpFactor * Vector2.up, ForceMode2D.Impulse);
         }
     }
-
-
 }
