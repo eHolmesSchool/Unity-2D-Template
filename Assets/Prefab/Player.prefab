@@ -330,13 +330,13 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 78dcfd26eada049b0840e276bd029712, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 3218547881947461336}
+        m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -349,7 +349,19 @@ MonoBehaviour:
     m_ActionId: 55ebe65d-2f70-4103-a8dd-c17f4f434ce7
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3218547881947461336}
+        m_TargetAssemblyTypeName: PlayerControls, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 987d8c62-6870-40a4-a36f-74b88ee27f22
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -409,6 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8e286d22858e540a68ec8d47407f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpFactor: 1500
+  moveFactor: 1000
+  speedLimit: 10
 --- !u!50 &7511110800536440796
 Rigidbody2D:
   serializedVersion: 4
@@ -421,12 +436,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4

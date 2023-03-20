@@ -8,6 +8,10 @@ public class PlayerControls : MonoBehaviour
     Rigidbody2D rBody;
     PlayerInput playerInput;
     Vector2 moveVector;
+
+    [SerializeField] float jumpFactor = 1;
+    [SerializeField] float moveFactor = 1;
+    [SerializeField] float speedLimit = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +21,27 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rBody.AddForce(4f * moveVector * Vector2.right);
-    }
+        float xVelo = rBody.velocity.x;
+        float yVelo = rBody.velocity.y;
 
-    public void OnJump(InputAction.CallbackContext context){
+        if (Mathf.Abs(xVelo) < speedLimit)
+        {
+            rBody.AddForce(moveVector * Vector2.right);
+        } else
+        {
+            //rBody.velocity = new Vector2 (xVelo / Mathf.Abs(xVelo) * speedLimit, yVelo);
+        }
+
+    }
+    public void OnMove(InputAction.CallbackContext context){// i dont actually know what this means
+
+        moveVector = context.ReadValue<Vector2>() * moveFactor;
+    }
+    public void OnJump(InputAction.CallbackContext context){ 
         if(context.action.WasPerformedThisFrame()){
-            rBody.AddForce(10f * Vector2.up, ForceMode2D.Impulse);
+            rBody.AddForce(jumpFactor * Vector2.up, ForceMode2D.Impulse);
         }
     }
 
-    public void OnMove(InputAction.CallbackContext context){
-        moveVector = context.ReadValue<Vector2>();
-    }
+
 }
