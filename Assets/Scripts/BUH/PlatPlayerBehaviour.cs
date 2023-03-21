@@ -32,6 +32,9 @@ public class PlatPlayerBehaviour : MonoBehaviour
                     break;
                 case CollectableType.Key:
                     break;
+                case CollectableType.Gem:
+                    coinCount += collectable.Collect();
+                    break;
                 case CollectableType.Special:
                     collectable.Collect(); //run the script
                     break;

@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using ICollectable;
-
 public class CoinBehaviour : MonoBehaviour, ICollectable
 {
+    public int Value { get => 1; set => Value = value; }
 
-    public int Value => 1;
     public CollectableType type => CollectableType.Money;
     public SpriteRenderer ourSprite;
     public Collider2D boundingBox;
@@ -25,5 +23,3 @@ public class CoinBehaviour : MonoBehaviour, ICollectable
         return Value;
     }
 }
-
-
