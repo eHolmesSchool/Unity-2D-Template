@@ -14,7 +14,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float jumpFactor = 1;
     [SerializeField] float moveFactor = 1;
     [SerializeField] float speedLimit = 10;
-    // Start is called before the first frame update
+
     void Start()
     {
         airborne = true;
