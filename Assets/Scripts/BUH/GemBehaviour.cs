@@ -6,7 +6,7 @@ public class GemBehaviour : MonoBehaviour, ICollectable
 {
     // (CNTRL + .   will give a bunch of freebies)
 
-    public int Value { get => 22; set => Value = value; }
+    public int Value { get => 10; set => Value = value; }
     public CollectableType type => CollectableType.Gem;
     private SpriteRenderer ourSprite;
     private Collider2D boundingBox;
