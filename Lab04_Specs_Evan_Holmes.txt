@@ -1,0 +1,9 @@
+(3 marks) Create a platformer game that has a main character and a whole bunch of platforms. 					DONE
+(5 marks) Make a goal for the game - get to a certain spot, collect a certain number of somethings, etc.				
+	When the goal for the game is achieved, a success message should be displayed, with the option to start again.	DONE - Message is the Sparkles
+(2 marks) Make the game look nice - everything in the scene should have a texture							DONE
+(2 Marks) Make the game have multiple levels (scenes)												DONE
+(1 Marks) Give the game a title screen														DONE
+(2 Marks) Make the game save and load progress													0/2 
+
+TOTAL  13/15
