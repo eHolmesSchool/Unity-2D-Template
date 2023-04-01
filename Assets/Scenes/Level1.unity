@@ -2992,17 +2992,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 682802789, guid: fa76853e25105eb42bf555602e88690c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218547881242439507, guid: fa76853e25105eb42bf555602e88690c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218547881242439507, guid: fa76853e25105eb42bf555602e88690c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
+    - target: {fileID: 1060094863, guid: fa76853e25105eb42bf555602e88690c, type: 3}
+      propertyPath: maxCoinCount
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3218547881947461337, guid: fa76853e25105eb42bf555602e88690c, type: 3}
       propertyPath: m_RootOrder

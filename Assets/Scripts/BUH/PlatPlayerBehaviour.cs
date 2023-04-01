@@ -1,20 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlatPlayerBehaviour : MonoBehaviour
 {
-    [SerializeField] private int coinCount = 0;
-    // Start is called before the first frame update
+    [SerializeField] private int coinCount;
+    private int maxCoinCount; //1 coin plus 10 gem
+    [SerializeField] ParticleSystem YippeeSparkles;
+    [SerializeField] TextMeshProUGUI CoinDisplay;
+
+    bool alreadyRunEndOfLevelSequence;
+
     void Start()
     {
+        coinCount = 0;
+        maxCoinCount = 11;
 
+        alreadyRunEndOfLevelSequence = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        CoinDisplay.GetComponent<TextMeshProUGUI>().text = $"{coinCount} / {maxCoinCount}";
+        if (coinCount >= maxCoinCount)
+        {
+            if (!alreadyRunEndOfLevelSequence)
+            {
+                alreadyRunEndOfLevelSequence = true;
+                YippeeSparkles.Play();
+                Invoke("LoadNextLevel", 3);
+            }
+        }
+    }
 
+    private void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int maxSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+        if (currentSceneIndex < maxSceneIndex)
+        {
+            SceneManager.LoadScene(currentSceneIndex+1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
