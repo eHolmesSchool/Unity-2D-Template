@@ -18,8 +18,8 @@ public class GemBehaviour : MonoBehaviour, ICollectable
     }
     public int Collect()
     {
-        boundingBox.enabled = false;
         ourSprite.color = new Color(1, 1, 1, 0.2f); //slightly transparent
+        boundingBox.enabled = false;
         return Value;
     }
 }

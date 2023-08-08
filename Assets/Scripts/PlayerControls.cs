@@ -15,13 +15,15 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float moveFactor = 1;
     [SerializeField] float speedLimit = 10;
 
+    
+
     void Start()
     {
         airborne = true;
         rBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called once per frame
     void FixedUpdate()
     {
         float xVelo = rBody.velocity.x;
@@ -38,6 +40,7 @@ public class PlayerControls : MonoBehaviour
 
         moveVector = context.ReadValue<Vector2>() * moveFactor;
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.action.WasPerformedThisFrame())
