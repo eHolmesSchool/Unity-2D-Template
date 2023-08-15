@@ -16,7 +16,6 @@ public static class GemManager //STATIC CLASS does NOT need an object
     }
 }
 
-
 public struct LevelGems
 {
     public int Level;

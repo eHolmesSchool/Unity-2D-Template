@@ -24,7 +24,7 @@ public class PlatPlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        CoinDisplay.GetComponent<TextMeshProUGUI>().text = $"{coinCount} / {maxCoinCount}";
+        CoinDisplay.GetComponent<TextMeshProUGUI>().text = $"{coinCount} / {maxCoinCount}"; 
         if (coinCount >= maxCoinCount)
         {
             if (!alreadyRunEndOfLevelSequence)
